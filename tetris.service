@@ -1,0 +1,21 @@
+[Unit]
+Description=Tetris Game Service (non-root, safe)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=styx
+WorkingDirectory=/home/styx/projects/games/tetris
+ExecStart=/home/styx/projects/games/tetris/start-tetris.sh
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=false
+ReadWritePaths=/home/styx/projects/games/tetris /home/styx/.local/share/Trash
+
+[Install]
+WantedBy=default.target
